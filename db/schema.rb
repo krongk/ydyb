@@ -144,10 +144,16 @@ ActiveRecord::Schema.define(:version => 20121130135853) do
     t.string   "taobao_url"
     t.text     "description"
     t.string   "tags"
-    t.string   "image_path1"
-    t.string   "image_path2"
-    t.string   "image_path3"
-    t.boolean  "is_valid",        :default => true
+    t.string   "big_image_path"
+    t.string   "other_images"
+    t.string   "shop_author"
+    t.string   "shop_rate"
+    t.integer  "shop_product_count"
+    t.date     "shop_created_at"
+    t.string   "shop_mobile_phone"
+    t.string   "shop_tel_phone"
+    t.string   "shop_email"
+    t.boolean  "is_valid",           :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

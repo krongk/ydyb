@@ -1,6 +1,6 @@
-<% title ["红宝石信息技术网，专业网站建设专家"].join(',') %>
-<% meta_keywords ["成都红宝石信息技术网", "网站建设，网站推广，公关软文，电子商务，企业信息化，Ruby on Rails"].join(' - ') %>
-<% meta_description ["红宝石信息技术网，多年互联网从业经验，团队为企业提供企业策划、网站建设、网络推广、公关软文、电子商务等一站式服务！联系电话：15928661802"].join(' - ') %>
+<% title ["一店一宝"].join(',') %>
+<% meta_keywords ["一店一宝", "淘宝店铺推广专家"].join(' - ') %>
+<% meta_description ["一店一宝"].join(' - ') %>
 
 <dl class="top_sum">
   <dt class="dt2"><a href="#">热门</a></dt>
@@ -22,9 +22,11 @@
       <dt><a href="#" class="product_item_show" id="product_item_show_<%= item.id %>"><%=item.title %></a></dt>
       <a href="#" class="product_item_show" id="product_item_show_<%= item.id %>">
       <dd>
-        <div class="pic1"><%=image_tag item.image_path1 %></div>
-        <div class="pic2"><%=image_tag item.image_path2 %></div>
-        <div class="pic3"><%=image_tag item.image_path3 %></div>
+        <div class="pic1"><%=image_tag item.big_image_path %></div>
+        <% item.other_images.split(/[,|]/).each_with_index do |img_path, index| %>
+          <div class="pic<%=index + 2%>"><%=image_tag img_path %></div>
+          <% break if index > 1 %>
+        <% end %>
       </dd>
       </a>
     </dl>

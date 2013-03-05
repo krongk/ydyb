@@ -21,45 +21,7 @@ class HomeController < ApplicationController
   	@location = Rails.cache.read(@ip)
   end
 
-  #syixia engine
-  def search
-    #because of 十八大
-    redirect_to '/'
-    return
-
-
-    if params[:q].blank?
-      flash[:notice] = "请输入搜索关键词！"
-      render 'form'
-      return
-    end
-    # @ic = Iconv.new('UTF-8//IGNORE', 'gb2312//IGNORE')
-    # @ic2 = Iconv.new('gb2312//IGNORE', 'UTF-8//IGNORE')
-    # @coder = HTMLEntities.new
-
-    #get key word
-    q = params[:q]
-    #q = q.squeeze(' ').strip unless q.blank?
-
-    #get search source <web, wenda>
-    t = params[:t] || 'web'
-    t = ['web', 'wenda'].include?(t) ? t : 'web'
-
-    #get page number
-    @page = params[:page].to_i || 1
-    @page = (1..100).include?(@page) ? @page : 1
-
-    #options = {:source => t.to_sym, :key_word => CGI.escape(@ic2.iconv(q)), :page => @page}
-    options = {:source => t.to_sym, :key_word => q, :page => @page}
-    # result = {:record_arr => [], :ext_key_arr => [], :source => 'web'}
-    @result = BaiduWeb.search(options[:key_word], :per_page => 20, :page_index => options[:page])
-    
-    #store in database -- Baidu killed my site cause I do some dup records.
-    # unless request.host_with_port == "localhost:3000"
-    #   BaiduMetaSearch.perform_async(q, get_search_result_body_html(@result[:record_arr])) if @result[:record_arr].any?
-    # end
-  end
-
+  
   def sitemap
     static_urls = [ 
       {:type => 'static', :title => '联系我们', :url => '/contact',      :updated_at => Time.now},

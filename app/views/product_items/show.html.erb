@@ -1,3 +1,6 @@
+<% title [@product_item.title, "一店一宝，淘宝网店推广助手"].join(' - ') %>
+<% meta_keywords [@product_item.title, "一店一宝，淘宝网店推广助手"].join(' - ') %>
+<% meta_description [@product_item.title, "一店一宝，淘宝网店推广助手"].join(' - ') %>
 
 <div class="tc_wrap">
   <div class="tc_top">
@@ -8,18 +11,18 @@
       <li><a href="#"><img src="/assets/ico11.jpg" /></a></li>
     </ul> -->
     </div>
-    <div class="tc_text">好评率：99.66%</div>
+    <div class="tc_text">好评率：<%= @product_item.shop_rate%></div>
     <div class="tc_ico"><a href="#">立即去逛逛</a></div>
     <div class="tc_ico2">
-      <p>宝贝 <strong>200</strong></p>
-      <p>喜欢 <strong>200</strong></p>
+      <p>宝贝 <strong><%= @product_item.shop_product_count%></strong></p>
+      <p>喜欢 <strong><%= @product_item.shop_product_count%></strong></p>
     </div>
     <div class="tc_ico3"><a href="#">分享</a></div>
     <div class="tc_ico4"><a href="#">喜欢</a></div>
   </div>
   <div class="tc_sum">
     <div class="pic">
-        <%= link_to image_tag(@product_item.image_path1), @product_item.taobao_url %>
+        <%= link_to image_tag(@product_item.big_image_path), @product_item.taobao_url %>
     </div>
     <div class="pic_r">
      <p><%= @product_item.description %></p>
@@ -29,12 +32,9 @@
         <% end %>
      </div>
      <ul class="ul">
-  		<li><a href="#"><img src="/assets/pic8.jpg" /></a></li>
-  		<li><a href="#"><img src="/assets/pic9.jpg" /></a></li>
-  		<li><a href="#"><img src="/assets/pic10.jpg" /></a></li>
-  		<li><a href="#"><img src="/assets/pic8.jpg" /></a></li>
-  		<li><a href="#"><img src="/assets/pic9.jpg" /></a></li>
-  		<li><a href="#"><img src="/assets/pic10.jpg" /></a></li>
+        <% @product_item.other_images.split(/[,|]/).each_with_index do |img_path, index| %>
+          <li class="pic#{index + 1}"><%=image_tag img_path %></li>
+        <% end %>
 		  <div class="clear"></div>
     </ul>
     </div>
