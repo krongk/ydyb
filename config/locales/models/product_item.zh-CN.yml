@@ -1,0 +1,23 @@
+#encoding: utf-8
+zh-CN:
+  activerecord:
+    models:
+      product_item: 店铺信息
+    attributes:
+      product_item:
+        id: 编号
+        product_cate: 店铺分类
+        title: 标题
+        description: 描述
+        taobao_url: 淘宝链接
+        tags: 标签
+        image_path1: 大图片地址
+        image_path2: 小图片地址
+        image_path3: 小图片地址
+        is_valid: 是否显示
+        created_at: 添加时间
+        updated_at: 更新时间
+    errors:
+      product_item: !!null 
+  helpers:
+    product_item: !!null 

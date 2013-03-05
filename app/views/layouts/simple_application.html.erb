@@ -1,0 +1,12 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+  <%= javascript_include_tag "iquery" %>
+  <%= stylesheet_link_tag    "content_default", "product_item" %>
+  <%= csrf_meta_tags %>
+</head> 
+ 
+<body style="overflow: hidden;">
+  <%= yield %>
+</body>
+</html>
