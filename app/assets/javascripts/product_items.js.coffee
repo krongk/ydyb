@@ -16,6 +16,7 @@ jQuery ->
 			overlayClose:true
 		})
 
+
   # $(".shop_dish_panel_menu_a").bind 'click', (event) ->
   #   shop_id = $(this).attr("id").replace("shop_dish_panel_menu_", "")
   #   $("#shop_dish_panel_" + shop_id).slideToggle(800)

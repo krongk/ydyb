@@ -6,12 +6,16 @@ class HomeController < ApplicationController
     if params[:cate]
       @product_cate = ProductCate.where(:en_name => params[:cate]).first
     end
-    if site = Site.find_by_name("product sort ids")
-      @hot_product_items = ProductItem.where(:is_valid => true).where("id in (#{site.value})")
+
+    if @product_cate
+      @hot_product_items = ProductItem.where(:is_valid => true).where(:product_cate_id => @product_cate.id).paginate(:page => params[:page] || 1, :per_page => 40)
     else
-      @hot_product_items = ProductItem.where(:is_valid => true).limit(100)
+      if site = Site.find_by_name("product sort ids")
+        @hot_product_items = ProductItem.where(:is_valid => true).where("id in (#{site.value})").paginate(:page => params[:page] || 1, :per_page => 40)
+      else
+        @hot_product_items = ProductItem.where(:is_valid => true).paginate(:page => params[:page] || 1, :per_page => 40)
+      end
     end
-    @hot_product_items = @hot_product_items.select {|p| p.product_cate_id == @product_cate.id } if @product_cate
   end
 
   #It's a location tip, you can set lawyer => nil, and modify 'views/home/location.html.erb' to 'view/home/_location.html.erb'

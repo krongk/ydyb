@@ -15,7 +15,7 @@
   <%= csrf_meta_tags %>
   <script type="text/javascript">
     $(document).ready(function(){
-      $('#slideshow1').sliders({ delay: 4500, speed: 800 });
+      $("#loading-mask").hide();
     });
   </script>
   <!--[if lt IE 7]>
@@ -24,6 +24,7 @@
 </head> 
  
 <body id="page1">
+  <div id='loading-mask'></div>
   <div id="apDiv1"></div>
   <%=render :partial => "layouts/header" %>
 

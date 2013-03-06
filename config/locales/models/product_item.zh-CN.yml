@@ -11,9 +11,14 @@ zh-CN:
         description: 描述
         taobao_url: 淘宝链接
         tags: 标签
-        image_path1: 大图片地址
-        image_path2: 小图片地址
-        image_path3: 小图片地址
+        big_image_path: 大图片地址
+        other_images: 小图片地址(用"|"分割)
+        shop_author: 掌柜
+        shop_rate: 信用评级
+        shop_created_at: 开店时间
+        shop_mobile_phone: 店铺联系电话(手机)
+        shop_tel_phone: 店铺联系电话(座机)
+        shop_email: 店铺Email
         is_valid: 是否显示
         created_at: 添加时间
         updated_at: 更新时间
